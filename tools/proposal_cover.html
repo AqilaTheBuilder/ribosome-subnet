@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    @page { size: 794px 1123px; margin: 0; }
+    :root {
+      --c-bg: #0a1628;
+      --c-accent: #4da8da;
+      --c-text: #e8f0f8;
+      --c-muted: #7a9bb8;
+      --c-glow: #2d7ab3;
+    }
+    html, body {
+      margin: 0; padding: 0; width: 794px; height: 1123px;
+      background: var(--c-bg); color: var(--c-text);
+      font-family: 'Inter', sans-serif;
+    }
+    @media screen {
+      html { height: auto; display: flex; justify-content: center; min-height: 100vh; background: var(--c-bg); }
+      body { transform-origin: top center; scale: min(1, calc(100vw / 794), calc(100vh / 1123)); margin: 0 auto; box-shadow: 0 0 60px rgba(0,0,0,0.3); }
+    }
+    .cover { width: 794px; height: 1123px; position: relative; border: none; outline: none; box-shadow: none; }
+    /* Layer 1: background glow, clipped */
+    .layer-bg { position: absolute; inset: 0; overflow: hidden; z-index: 1; }
+    .glow-a {
+      position: absolute; top: 40px; left: 40px; width: 420px; height: 420px;
+      background: radial-gradient(circle, rgba(45,122,179,0.10) 0%, rgba(45,122,179,0) 68%);
+    }
+    .glow-b {
+      position: absolute; bottom: 60px; right: 50px; width: 460px; height: 460px;
+      background: radial-gradient(circle, rgba(45,122,179,0.08) 0%, rgba(45,122,179,0) 66%);
+    }
+    /* Layer 2: luminous frame */
+    .layer-frame { position: absolute; inset: 0; z-index: 2; }
+    .frame {
+      position: absolute; left: 60px; right: 60px; top: 80px; bottom: 80px;
+      border: 2px solid var(--c-accent);
+    }
+    /* Layer 3: content */
+    .layer-content { position: absolute; inset: 0; z-index: 3; }
+    .kicker {
+      position: absolute; left: 104px; top: 135px;
+      font-size: 11pt; font-weight: 300; color: var(--c-accent);
+      letter-spacing: 5px; text-transform: uppercase; max-width: 560px;
+    }
+    .hero {
+      position: absolute; left: 104px; top: 236px;
+      font-family: 'Playfair Display', serif; font-weight: 900;
+      font-size: 50pt; line-height: 1.15; color: var(--c-text);
+      text-shadow: 0 0 26px rgba(77,168,218,0.35); max-width: 580px;
+    }
+    .summary {
+      position: absolute; left: 104px; top: 505px;
+      font-size: 15pt; font-weight: 300; line-height: 1.7;
+      color: var(--c-muted); max-width: 545px;
+    }
+    .params {
+      position: absolute; left: 104px; top: 768px;
+      font-size: 11.5pt; font-weight: 400; color: var(--c-accent);
+      letter-spacing: 1.5px; opacity: 0.9; max-width: 560px;
+    }
+    .org {
+      position: absolute; left: 104px; top: 822px;
+      font-size: 18pt; font-weight: 500; color: var(--c-text);
+    }
+    .org-sub {
+      position: absolute; left: 104px; top: 864px;
+      font-size: 11pt; font-weight: 300; color: var(--c-muted);
+      letter-spacing: 0.5px;
+    }
+    .date {
+      position: absolute; left: 104px; bottom: 130px;
+      font-size: 10pt; font-weight: 300; color: var(--c-muted);
+      letter-spacing: 3px; text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div class="cover">
+    <div class="layer-bg">
+      <div class="glow-a"></div>
+      <div class="glow-b"></div>
+    </div>
+    <div class="layer-frame">
+      <div class="frame"></div>
+    </div>
+    <div class="layer-content">
+      <div class="kicker">Bittensor Global Subnet Hackathon &middot; Checkpoint 1 Proposal</div>
+      <div class="hero">RIBOSOME<br>NETWORK</div>
+      <div class="summary">
+        A decentralized RNA inverse-folding subnet: miners are synthetases
+        that design RNA sequences for rotating structural targets; validators
+        are chaperones that refold and score them. Commit&ndash;reveal,
+        duplicate gates, diversity bonuses and delayed score reveals make
+        every attack path earn zero &mdash; implemented, tested and simulated
+        in this submission.
+      </div>
+      <div class="params">&theta;<sub>dup</sub> 0.85 &nbsp;&middot;&nbsp; w<sub>div</sub> 0.1 &nbsp;&middot;&nbsp; T<sub>rot</sub> 16 &nbsp;&middot;&nbsp; B 4 &nbsp;&middot;&nbsp; &delta;<sub>tm</sub> 0.35 &nbsp;&middot;&nbsp; 58 tests green</div>
+      <div class="org">Ribosome Network Team</div>
+      <div class="org-sub">A synthetic ribosome on the Bittensor ecosystem</div>
+      <div class="date">September 2026 &middot; Subnet Proposal v0.2</div>
+    </div>
+  </div>
+</body>
+</html>

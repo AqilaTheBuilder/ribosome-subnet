@@ -1,0 +1,17 @@
+metric,value,note
+training_sequences_total,2400,Stanford OpenVaccine COVID-19 mRNA Vaccine Degradation dataset
+sequences_passing_sn_filter,1589,SN_filter==1 high signal-to-noise subset used for training
+sequences_low_snr_set_aside,811,SN_filter==0 excluded from training
+sequence_length_nt,107,per-sequence length
+scored_positions,68,first 68 positions carry reliable labels
+unscored_padding_nt,39,remaining positions act as unscored padding
+labeled_positions_total,108052,1589 sequences x 68 scored positions
+forward_model,XGBoost,"600 estimators, max depth 6, lr 0.05, subsample 0.85; one regressor per head"
+cv_scheme,group-aware 5-fold,all positions of a sequence stay in the same fold
+rmse_reactivity,0.319,lowest-error head
+rmse_deg_mg_ph10,0.399,highest-error head
+rmse_deg_mg_50c,0.349,
+mcrmse_mean,0.356,forward-model quality anchor for miner-side stability scoring
+mcrmse_std,0.004,very stable across folds
+mcrmse_heldout_30_targets,0.337,design-benchmark targets excluded from training (no leakage)
+paired_vs_unpaired_reactivity_median,0.13_vs_0.31,DMS-MaPseq suppression at paired bases

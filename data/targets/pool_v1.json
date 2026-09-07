@@ -1,0 +1,556 @@
+{
+  "version": "v1",
+  "n_pool": 32,
+  "t_rot": 16,
+  "rotate_fraction": 0.5,
+  "oracle": "stub-nussinov",
+  "note": "Demo pool: designed motifs + synthetic Nussinov-derived structures. Production pools swap this manifest for RNASolo / Das et al. (2010) benchmark structures - the code loads by manifest, not by builder.",
+  "difficulty_counts": {
+    "easy": 41,
+    "medium": 4,
+    "pseudoknot": 1,
+    "hard": 8
+  },
+  "targets": [
+    {
+      "id": "des-hairpin-01",
+      "name": "tandem stem-loops 28nt",
+      "sequence": "GGGCAAUAGCCCAAAAGGGCAAUAGCCC",
+      "dot_bracket": "((((..((((((....))))..))))))",
+      "difficulty": "easy",
+      "source": "designed",
+      "note": "re-referenced to oracle fold",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "des-hairpin-02",
+      "name": "GC-rich hairpins 28nt",
+      "sequence": "GGGGCAAAGGCCCCAAAAGGGGCAAAGGCCCC",
+      "dot_bracket": ".((((...)(((((....))))(...).))))",
+      "difficulty": "easy",
+      "source": "designed",
+      "note": "re-referenced to oracle fold",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "des-clover-01",
+      "name": "cloverleaf-like 4-way",
+      "sequence": "GGCCAUUUAUGGCCCCCCUGGCCAAACGGCCACCCCGGUUACCCAUAACCCCCCCCGGAAAUAUCCGG",
+      "dot_bracket": "((((..((.(((..((...))))))).)))).....(((((....)))))....((((.(...)))))",
+      "difficulty": "medium",
+      "source": "designed",
+      "note": "tRNA-like multi-loop approximation re-referenced to oracle fold",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "des-hammer-01",
+      "name": "hammerhead-like 3-stem",
+      "sequence": "GGAGCUCUCCGCUCCAAGACCGACUCGCGGUCAAGGCCUCCUAAAGGCC",
+      "dot_bracket": "(((((.((..((((...))(((...)).)).)).))).)((....))))",
+      "difficulty": "medium",
+      "source": "designed",
+      "note": "hammerhead-motif approximation re-referenced to oracle fold",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "des-lariat-01",
+      "name": "nested long-range pairs 44nt",
+      "sequence": "GGGGGGAAUACCCCCCAAAACCCCCCAAUAGGGGGG",
+      "dot_bracket": "((((((....))))))....((((((....))))))",
+      "difficulty": "medium",
+      "source": "designed",
+      "note": "",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "des-pk-01",
+      "name": "H-type pseudoknot 24nt",
+      "sequence": "GGCAUUUAGCGCCAUCUGCCGCGC",
+      "dot_bracket": ".((.....(((.(....)).))))",
+      "difficulty": "pseudoknot",
+      "source": "designed",
+      "note": "requires []-aware oracle; ()-only folders cannot match re-referenced to oracle fold",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-000",
+      "name": "synthetic fold 48nt",
+      "sequence": "UCGCCCGUGCCGCGAAUAACGUUUCUUCGCAGUAGGUCUGACGCUCCC",
+      "dot_bracket": "((((((.((.((.(((.(...))))..)))))..)).).)).(...).",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-001",
+      "name": "synthetic fold 72nt",
+      "sequence": "CUUCGGAUAAGCAGGGUCGGGCCGGGUCGGCUUUAGGGGGCUGGCCGCCUCAGCGGCCCGAUGACUGAAGCA",
+      "dot_bracket": "((((((.(...((...((((((((((.((((..((.(...))))))))).).).).))))))))))))))..",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-002",
+      "name": "synthetic fold 56nt",
+      "sequence": "UGCCGGAUGCCGCAUGCCGAGCCCUUCGAAACAUUCAGUUUACGCAGUUGGAUACA",
+      "dot_bracket": "(((((((((...))).))).)(((.(((((((.....)))).)).))..))...))",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-003",
+      "name": "synthetic fold 80nt",
+      "sequence": "CACGGGAGACCAGAUGCUAAGCCUAGGGGUAAAAGUGCCAACUGCAGUCCGGGACAUAAUCGAUGACAUACCUCAUUAGC",
+      "dot_bracket": "(.(.((((.((((..((...)))).)((((.(...))))..).))..)))))(.(.((((.((.(.....).))))))))",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-004",
+      "name": "synthetic fold 64nt",
+      "sequence": "UGGGAUGGUGAUGCUUCAGCUUCCCUUGACAACAAAGGCUUAUUCGCAAGGGCCUAGUCAGAAA",
+      "dot_bracket": ".((((.(((((...).)).))))))(((.(..(...)))..)(((((.((...)).).).))))",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-005",
+      "name": "synthetic fold 80nt",
+      "sequence": "UAUUAUUAAAUAUUUAUUAUAUUUUUAAAUAACUAAAAUAUAGUUUAAAUCUUCAAAUAUUAUAAAACUUUGAUUUUUAA",
+      "dot_bracket": "((...)((((.(((((((((.((...)))))).))))(((.((.(...).)))(((((.((...))).))))))))))))",
+      "difficulty": "hard",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-006",
+      "name": "synthetic fold 56nt",
+      "sequence": "ACGCGAUUAAGACGCCUGGUCAGCGGGACAGUCUUGUCCCUACUGUCUCUACGAUC",
+      "dot_bracket": "..(((..((((((((...).)((.((((((...).)))))..)))))).))))..)",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-007",
+      "name": "synthetic fold 64nt",
+      "sequence": "UCUGUUACUGGUGUUACGGGCCGUGAUAUGAGGCCCGACGGCUCCGGUGACCACCAGGAUGGAA",
+      "dot_bracket": "((((((.((((((((((((((((((....(...))..))))).))).)))).))))))))))).",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-008",
+      "name": "synthetic fold 72nt",
+      "sequence": "AGGUCGGUUGGUUGAGUCGUGCUGCCCGGGCCGCCGGGUAGCCCCGCGCCAUUCAACCGAGCUGGCAGGAAC",
+      "dot_bracket": "..(((((((((((((((.(.((.(..((((((...))(...))))))))))))))))))).)...).).).)",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-009",
+      "name": "synthetic fold 88nt",
+      "sequence": "GCCUUCACGAAGCGUGCCUGCAGUCAGGAUCGCUAGCAGACUGGUGCCGUAUCCGGCAACUGGAAUCCUGACGUCUGGUUCAAUUUGA",
+      "dot_bracket": "(((.(((((...)))(((((....))))..))..))(((((.(((((((...).)))).)(((...))..)))))))))(((...)))",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-010",
+      "name": "synthetic fold 88nt",
+      "sequence": "GUUGGUCGGAUAGACGUGGGGACAAAGUCCAGACCGUGUCGUGCUGGUCGGGACUAGAUGUUCAGGCAUAAAUAACUAAUCGCAACAC",
+      "dot_bracket": "(.(((.(.(((((((((((((((...))))...)))))))((((((((((...)..)))...))).)(....)).))).))))..)))",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-011",
+      "name": "synthetic fold 88nt",
+      "sequence": "UUUACCUUUGCGCUCAAUAAUAGAUUUUUUAAUUAAAAUAAUUAAUAAAUAGUUUUUUAUAAACUAUUAUUUAAAAUUUAUCAUUUAU",
+      "dot_bracket": "..((((...).).).)(((((.((.((((((((((...)))))(((.(((((..(((...))))))))))).))))...)))))).))",
+      "difficulty": "hard",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-012",
+      "name": "synthetic fold 56nt",
+      "sequence": "GGGAAGUUUGUAGAGACGAUUCCCUCUUUAGAAGGCUCGAAUGGUGUGCGUCUGAG",
+      "dot_bracket": "(((((..((((....)))))))))((((...))))((((.((.(....)))).)))",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-013",
+      "name": "synthetic fold 56nt",
+      "sequence": "UCGACGGGCCGGCUGCCCGCCGUCCGAGUCUCUGUCCAAGUCAGUGCAUGUGCAUU",
+      "dot_bracket": ".((((.((.(((...)).)))))).)((...)((.((.((.(...)).)).)))).",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-014",
+      "name": "synthetic fold 48nt",
+      "sequence": "AAUAGAACCGGGAUAGCACCUCAGUCGAGCCUUAGGUUACGCUCCGUC",
+      "dot_bracket": "....(.(.((((..((...)))((.((((((...)))).)))))))))",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-015",
+      "name": "synthetic fold 72nt",
+      "sequence": "CACUUGGUCGGUGUGUCUGCGACUUAGAAGGCCAUGGGGCCCCGUUAUCCCAUAAGGGACUUCCUAAUAUCG",
+      "dot_bracket": ".((...))(((((.(((...)))((((((((((...)).)(((.((((...))))))).)))).))))))))",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-016",
+      "name": "synthetic fold 72nt",
+      "sequence": "AGGGUAUACCCAGCUACGACUCGCGCUAGCAUAGGCGGCUCCUUCGAUCGAAGAUACUGUAUAGAGGGUCAA",
+      "dot_bracket": ".(((....))).((..((.(.(((.(((...)))))))).(((((((((...))).).).).)).))).)..",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-017",
+      "name": "synthetic fold 80nt",
+      "sequence": "AAAUAAAAAUACUUAUUAAUAAAAUCAAAUAUAAGGAAUAAAUAAAUAUUAAUAAUUGUAUAAUAUAAUAUUAUUUAAUA",
+      "dot_bracket": "...(.(((((((((((((((.(((((...(...)).).)...)...)))))))))..)))(((((...))))))))..))",
+      "difficulty": "hard",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-018",
+      "name": "synthetic fold 88nt",
+      "sequence": "CCCUUUACGGACGUUCGCGUUUUUUAUUAGGCCUUGCCCUAAUAACUUUCAUCCUAACCUCCCGCUAGAACUUGUUGUGCGUGGGGCC",
+      "dot_bracket": "(((.(((.(((((....)))...(((((((((...))).)))))))(...).).)))((.((((.(...))..)..).).).))))..",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-019",
+      "name": "synthetic fold 56nt",
+      "sequence": "UUAUAUCGCAAAGGGAGCGACACAAAUAAGGGGCCCUAAUUAAUUACAACUUCCCG",
+      "dot_bracket": "(...).(((...)((((.(..(.((((.(((...)))).))..)).)..)).))))",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-020",
+      "name": "synthetic fold 64nt",
+      "sequence": "CAGCACUAGCCCGAUGCGGACACAGCCGAUUCAGCGCCCGGUUCAUCCAGCGCCGAGAUGCGGA",
+      "dot_bracket": "(.((....))(((..((((.(...))((...).))))).)(..(((((.(...)).))))))).",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-021",
+      "name": "synthetic fold 64nt",
+      "sequence": "UCCUACGCCCAGCCGUGAUUGCGACCGUUCGGGGGUUGGCUCACUUCCAGGCAGGGAGGGAACU",
+      "dot_bracket": "(((..(.(((.((((.((..(.(((((.((...))).)).)).)).)).))).))).))))...",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-022",
+      "name": "synthetic fold 72nt",
+      "sequence": "AAAUCGGUUAUUUUACCACCAACGAGCGCACCUGAUUGGUGCUAUACCAUAUAUGAGAGCCCUGCAAGCAUC",
+      "dot_bracket": ".(((((((((...)).(.((...).).).))).))))((((((.(.(((....)).))((...))).)))))",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-023",
+      "name": "synthetic fold 88nt",
+      "sequence": "AUAGUUUUAUGUUAUAGAAUAAAAAGUAUUUAUAAACUAUAAAAUAUUAAUAUGUUAUUAUUAAUAUUUAAAUAACGUAUAAUUUUAG",
+      "dot_bracket": ".(((.(((((.((((...))))(((...)))))))))))(.(((.(((.((((((((.(.((((...)))))))))))))))))))).",
+      "difficulty": "hard",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-024",
+      "name": "synthetic fold 56nt",
+      "sequence": "GAAGGGGUCGGAAGGGGACCAAGCGCCAGUAGAGCCUUAGUUCUAAUGUGAAUCCC",
+      "dot_bracket": "...((((((((((.(...)((((.(((....).))))).)))))(...))).))))",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-025",
+      "name": "synthetic fold 64nt",
+      "sequence": "UGGGUGCACGCAACGGCACGAGCACUCAGCGGCUGAUUCGGGGUUACAUGUCAUGCUCGCCGUC",
+      "dot_bracket": ".((((((.((...)))))(((((((((..(..(.(...))))(...)).))...)))))))..)",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-026",
+      "name": "synthetic fold 48nt",
+      "sequence": "AGGUCGCACACUUGGCCGCGCCCUCAAGCCGCCUAAUGCUGAAGUGCC",
+      "dot_bracket": ".((.(((.(((((((.((((....)..)).))).)).).))..)))))",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-027",
+      "name": "synthetic fold 80nt",
+      "sequence": "CAGAGGCAGUCCAGUGGCGCAGCUUUCGUUGAUUCCCCCAUCUCCUAAUAUCAGUUUGGGGUGCAUGGGGACGGGAACCU",
+      "dot_bracket": "(((((((.(.((...)))))..))))((.((...)(((((((.((((...)((...))))).).))))))))))(...).",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-028",
+      "name": "synthetic fold 80nt",
+      "sequence": "UACGGACUGUUCAGCUUUCGCCUUAGCUUUAACCACGACCAAUGCCGAGGGUGCCAGGCUGUAUCUGCCGGGGUAGGUAC",
+      "dot_bracket": "(((((.((....)))...))((.((.((...)((((..((...)(...)))))((.(((.(...).))))))))))))).",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-029",
+      "name": "synthetic fold 64nt",
+      "sequence": "UUUUAUAUAAAUAUUAAAAAUUCUUAUACUUUGAUUAAUGAAUAUAUUUAAUUCUAUAACAACU",
+      "dot_bracket": ".(((.(((.((.(((((((((((((((.(...))).)).)))).).))))))).))))).))..",
+      "difficulty": "hard",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-030",
+      "name": "synthetic fold 80nt",
+      "sequence": "CGAAGUCAUACUGUCCCCCAGCGCCAUGUGCCACCUAGAAGACGGUCAGCGACGCGUCGAGACUGCUGUUACGACGGUUC",
+      "dot_bracket": ".((((.((...)).).(((.(((((..(((...)((...)))))).).)))..)((((((.((....))).)))))))))",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-031",
+      "name": "synthetic fold 64nt",
+      "sequence": "GAACGGUCAUUGAGAUCACUCGAUCACUUUGUUGUUGCUCCUGCCGCGGCAUGGGAUUCUAGCA",
+      "dot_bracket": "..((((((...(((....)))))))((...)).))((((((((.(...))).))(...).))))",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-032",
+      "name": "synthetic fold 88nt",
+      "sequence": "CCCGCCGAUGGCAUUUACAGGGCGUUCUGCUGAAAGAAAGAUCCAACUUCUCAUUGGGGUCCGCGCCGAACGGCCAUUGUCCGCUUGC",
+      "dot_bracket": "((((((...)))..(...))((((..(.(((...))...((.(((...)(.(...)))))))))))))(((((.(...).))).))).",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-033",
+      "name": "synthetic fold 48nt",
+      "sequence": "GGUACCAUGUGAUGCUCUUUGAGGCCUGGACCUACAGCAGAAUGCUAA",
+      "dot_bracket": "(((.(((.(.(.(.(((...))))))))))))(..((((...))))).",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-034",
+      "name": "synthetic fold 48nt",
+      "sequence": "UGAGCUCACCGUGAACGAUUCUAUGCCAAACUCGGUGUUGCGGAUGCG",
+      "dot_bracket": "(..(..(((((.(..(.((...))))(((((...)).)))))).))))",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-035",
+      "name": "synthetic fold 88nt",
+      "sequence": "AGUUUGUUGUUUAAUAAAUAUGAUAUUGCAUUCUACAAAUGUAAAUAUUUCUUUACUUUUACAAAUAAUUUUAUUUUUUGAAACAAAA",
+      "dot_bracket": "..((((((((((...)))((.((.((...)))))))(((.((.((.(....))))))))(.((((.(((...)))))).)))))))).",
+      "difficulty": "hard",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-036",
+      "name": "synthetic fold 64nt",
+      "sequence": "ACUCUUGCAACAGUGCCCCAAGACCUGUAUAGGGCGCGGGAGAAAAACAUCCGCACGUCCGCCA",
+      "dot_bracket": "(...)((((((((.(..(...).))))).).((((((.((((.....).)))))..)))))).)",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-037",
+      "name": "synthetic fold 88nt",
+      "sequence": "UCUCAAGUCCAUCAAAAGGUUAAUUGCUAACAGCAUGACUGUAGGAGGGCAACUGGGGGUCCAGGACAUGCUCCUCUGGACGCCCGCC",
+      "dot_bracket": "((((.(((((..(....))...(.((((...)))))))))).)).)(((...)(.((((((((((..(...))))..)))).))))))",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-038",
+      "name": "synthetic fold 80nt",
+      "sequence": "CUCCUACUCCAAAGGGUAGCGAUCAAACACUUUGCCGGGGACGACCCUCUGCCGGAUGGGACUACCGCAGUCAGCCUAUU",
+      "dot_bracket": ".((((((.((...)))))(.(..((((...))))))))((.(((...)(((.(((.((...).))))))).).))).)..",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-039",
+      "name": "synthetic fold 80nt",
+      "sequence": "UAAAGUUUGGUUUAGGACACUUGAGACAGGCCAGCAGACCCUCAUGUAAACAGAUUGAUUAAUUCACGCUUGUGGGGGUU",
+      "dot_bracket": "..((((((.(.((.((.(.(.((...)))))))))))))((.(((.(.((((...)).)))))((((....)))))))))",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-040",
+      "name": "synthetic fold 56nt",
+      "sequence": "AACCACCUUGGACUCUUAACGUGGCUCUUAAGUGAAUCGAACGGUCGGACCUUUAU",
+      "dot_bracket": "(((((((((((.(.(..(...)))).)..))(((...).).)))).))(...)).)",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-041",
+      "name": "synthetic fold 64nt",
+      "sequence": "UUUAAAUUAUUAUAGUAAUUUAAAUAGUUUAUUAUAUAUUUUGAUACUUAAUUAAAAAUUAUUG",
+      "dot_bracket": "((((((..(.((((.(((..((((...))))))))))))))))).)(..((.(((...))))))",
+      "difficulty": "hard",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-042",
+      "name": "synthetic fold 88nt",
+      "sequence": "GAGCGGGGCACGAAUGGCAAGUCAUAUUUUCACCCGGGGGUCCUCAUUGCGUAACUUCUGCCCGCCCCAUCGUCUUCGGAUAUCGUUU",
+      "dot_bracket": "((((((((..((((((((((((...))))((.(...)))).))..)))(((.(...)).))).)))))...).)))(((...)))...",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-043",
+      "name": "synthetic fold 88nt",
+      "sequence": "GGGAAUUGACAUACGAUACAUGAUAAAGUUGGACAGUGCCACUCCAUCAUAACGCAUUGCUGUGCGAAUGUCGGGGUUUAUACCCUAU",
+      "dot_bracket": "(((..((.((((..(...)))).)))((.(((.(...))))))))..)((.(((((((((...)).)))).))(((.(...)))))))",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-044",
+      "name": "synthetic fold 80nt",
+      "sequence": "CUUCAAGGGGGAAUUGGUUGCGAUAUAAGUGCGCUUGUUGCACUCGCCACCUCUCCGGACGUGUAACCGAAACCCACGGG",
+      "dot_bracket": "(.((..(((((.(..((.((((((...)(((((....).)))))))).))))).))((.((.(...)))...))).))))",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-045",
+      "name": "synthetic fold 88nt",
+      "sequence": "GUAGUAGUCUAACGUAUCGCUAAACCGCUCUGCGGGAGGUGCUAAUCUGGUGGGUAAAGGAAAAGGCUUUAAACGGGCAGCCCCCUGG",
+      "dot_bracket": ".(((....))).((...))((.((((((...))(((((...))..))))))(((((((.(......)))))..)(((...))))))))",
+      "difficulty": "easy",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-046",
+      "name": "synthetic fold 48nt",
+      "sequence": "CACCCCCCGACUCUAUCUUACACGGAGAGCUCUCAGCACACCGUCUCA",
+      "dot_bracket": ".(..(((((..(.((...)).)))).).).).(.((.((...)))).)",
+      "difficulty": "medium",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    },
+    {
+      "id": "syn-047",
+      "name": "synthetic fold 80nt",
+      "sequence": "AAUUAUAAAUAUUAAUAAUUAAAUUUUAGAUUAAAAAAAAUUAUUUACUUAAAAAAUAAAAAAAGUAUAAAAAAAUUUUU",
+      "dot_bracket": "..((((((((.((((...))))))))(((..((((((...)).))))))(...))))))(((((.(.(...))..)))))",
+      "difficulty": "hard",
+      "source": "synthetic",
+      "note": "folded by bundled Nussinov (self-consistent)",
+      "oracle_recovery_tm": 1.0
+    }
+  ]
+}

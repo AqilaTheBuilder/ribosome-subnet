@@ -1,0 +1,78 @@
+{
+  "config": {
+    "epochs": 20,
+    "seed": 42,
+    "n_miners": 32,
+    "n_ga": 12,
+    "n_stub": 10,
+    "n_copier": 6,
+    "n_lazy": 2,
+    "n_leaker": 2,
+    "k_candidates": 4,
+    "theta_dup": 0.85,
+    "w_div": 0.1,
+    "score_delay_b": 4,
+    "t_rot": 16,
+    "delta_tm": 0.35
+  },
+  "per_strategy": {
+    "ga_strong": {
+      "n_miners": 12,
+      "mean_tm": 0.7514,
+      "mean_final_score": 0.7765,
+      "acceptance_rate": 0.9917,
+      "zeroed_rate": 0.0083,
+      "duplicate_rate": 0.0,
+      "mean_weight_share": 0.4707
+    },
+    "stub_honest": {
+      "n_miners": 10,
+      "mean_tm": 0.5414,
+      "mean_final_score": 0.5431,
+      "acceptance_rate": 0.835,
+      "zeroed_rate": 0.165,
+      "duplicate_rate": 0.0,
+      "mean_weight_share": 0.2808
+    },
+    "copier": {
+      "n_miners": 6,
+      "mean_tm": 0.7611,
+      "mean_final_score": 0.0,
+      "acceptance_rate": 0.0,
+      "zeroed_rate": 1.0,
+      "duplicate_rate": 0.9833,
+      "mean_weight_share": 0.0
+    },
+    "lazy": {
+      "n_miners": 2,
+      "mean_tm": 0.4913,
+      "mean_final_score": 0.4814,
+      "acceptance_rate": 0.75,
+      "zeroed_rate": 0.25,
+      "duplicate_rate": 0.0,
+      "mean_weight_share": 0.0485
+    },
+    "leaker": {
+      "n_miners": 2,
+      "mean_tm": 0.0,
+      "mean_final_score": 0.0,
+      "acceptance_rate": 0.0,
+      "zeroed_rate": 1.0,
+      "duplicate_rate": 0.0,
+      "mean_weight_share": 0.0
+    }
+  },
+  "security": {
+    "duplicates_zeroed": 118,
+    "leaker_commits_rejected": 40,
+    "missed_reveals_zeroed": 2,
+    "gate_failures": 45,
+    "rotations": [
+      16
+    ]
+  },
+  "mechanism": {
+    "oracle": "stub-nussinov",
+    "epoch_phases": "COMMIT(3m) EVALUATE(6m) SET_WEIGHTS(2m) REVEAL(2m) ROTATE(2m)"
+  }
+}

@@ -1,0 +1,6 @@
+beta,structure_distance_mean,structure_distance_std,pred_instability_mean,pred_instability_std,mfe_kcal_mol_mean,mfe_kcal_mol_std,gc_content_mean,gc_content_std,frac_paired_mean,frac_paired_std
+0.0,0.024,0.039,1.091,0.142,-33.10,7.97,0.487,0.048,0.574,0.044
+0.1,0.018,0.028,0.942,0.125,-40.12,9.25,0.556,0.048,0.570,0.036
+0.5,0.049,0.038,0.826,0.101,-44.19,6.99,0.569,0.040,0.599,0.035
+1.0,0.121,0.067,0.728,0.082,-48.04,7.46,0.591,0.042,0.663,0.055
+2.0,0.175,0.062,0.683,0.087,-51.86,10.62,0.607,0.050,0.712,0.050

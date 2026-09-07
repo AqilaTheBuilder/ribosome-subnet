@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #FFFFFF; color: #111827;
+    -webkit-font-smoothing: antialiased;
+  }
+  #root { width: fit-content; min-width: 1560px; padding: 26px 22px; }
+  .strip { display: flex; align-items: stretch; gap: 0; }
+  .node {
+    width: 285px; border-radius: 12px; padding: 18px 16px;
+    background: #F0F4F8; border: 2.5px solid #5B7A99;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .node .ph {
+    font-size: 40px; font-weight: 800; color: #1E3A5F; letter-spacing: 0.5px;
+  }
+  .node .who {
+    font-size: 24px; font-weight: 600; color: #475569; letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .node .what { font-size: 28px; color: #334155; line-height: 1.4; }
+  .node .clock {
+    margin-top: auto; font-size: 24px; font-weight: 700; color: #1E3050;
+    background: rgba(255,255,255,0.85); border-radius: 10px; padding: 4px 12px;
+    align-self: flex-start;
+  }
+  .arrow {
+    display: flex; align-items: center; justify-content: center;
+    width: 34px; color: #94A3B8; font-size: 40px; font-weight: 700;
+  }
+  .n1 { background: #F1F5F9; border-color: #94A3B8; }
+  .n2 { background: #E8EDF3; border-color: #6B809A; }
+  .n3 { background: #E2E8F0; border-color: #5B7590; }
+  .n4 { background: #DAE1EB; border-color: #4B6A87; }
+  .n5 { background: #D2DAE5; border-color: #3B5F7D; }
+</style>
+</head>
+<body>
+<div id="root">
+  <div class="strip">
+    <div class="node n1">
+      <div class="ph">1 · COMMIT</div>
+      <div class="who">Synthetases</div>
+      <div class="what">SHA-256 of K = 4 candidates, salted, target-bound</div>
+      <div class="clock">3 min</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="node n2">
+      <div class="ph">2 · EVALUATE</div>
+      <div class="who">Chaperones</div>
+      <div class="what">Oracle refold · TM score · gate δ = 0.35 · duplicates zeroed</div>
+      <div class="clock">6 min</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="node n3">
+      <div class="ph">3 · SET WEIGHTS</div>
+      <div class="who">Chaperones</div>
+      <div class="what">Apply scores revealed after the B = 4 epoch hold</div>
+      <div class="clock">2 min</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="node n4">
+      <div class="ph">4 · REVEAL</div>
+      <div class="who">Synthetases</div>
+      <div class="what">Publish (payload, salt); mismatch or silence = zero</div>
+      <div class="clock">2 min</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="node n5">
+      <div class="ph">5 · ROTATE</div>
+      <div class="who">Protocol</div>
+      <div class="what">Every T<sub>rot</sub> = 16 epochs swap half the target pool</div>
+      <div class="clock">2 min</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

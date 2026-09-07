@@ -1,0 +1,8 @@
+# Core mechanism (no bittensor required)
+numpy>=1.26
+pytest>=8.0
+
+# Optional adapters
+# viennarna  -> install ViennaRNA system package (RNAfold binary), no pip needed
+# bittensor  -> pip install bittensor   (testnet neurons only)
+# xgboost    -> pip install xgboost     (production miner stability model)

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --text: #111827; --text-sub: #6B7280; --border: #E5E7EB;
+    --connector: #94A3B8;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #FFFFFF; color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+  #root { width: 920px; margin: 0 auto; padding: 48px 44px 40px; }
+
+  .flow-title { font-size: 24px; font-weight: 700; text-align: center; }
+  .flow-subtitle { font-size: 14px; color: var(--text-sub); text-align: center; margin-top: 8px; margin-bottom: 32px;}
+
+  .phase-group { background: #F8FAFC; border-radius: 12px; padding: 18px 22px 16px; }
+  .phase-title {
+    font-size: 16px; font-weight: 700; padding: 10px 16px;
+    border-radius: 8px; margin-bottom: 12px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .phase-title .clock {
+    font-size: 12.5px; font-weight: 600; color: #475569;
+    background: rgba(255,255,255,0.75); border-radius: 12px; padding: 3px 10px;
+  }
+  .phase-steps { display: flex; flex-direction: column; gap: 7px; padding-left: 10px; }
+  .phase-step {
+    font-size: 14px; color: var(--text); padding: 9px 14px;
+    background: white; border-radius: 6px; border: 1px solid var(--border);
+    line-height: 1.45;
+  }
+  .step-num {
+    display: inline-block; width: 22px; height: 22px; line-height: 22px;
+    text-align: center; border-radius: 50%; font-size: 12px; font-weight: 600;
+    margin-right: 9px;
+  }
+  .step-note { color: var(--text-sub); font-size: 12.5px; }
+  .param { font-weight: 600; color: #1E3A5F; }
+
+  /* Scheme B: neutral gray base + blue accent progression (5 phases) */
+  .phase-1 .phase-title { background: #F1F5F9; color: #334155; border-left: 4px solid #94A3B8; }
+  .phase-1 .step-num { background: #F1F5F9; color: #475569; }
+  .phase-2 .phase-title { background: #E8EDF3; color: #2D4156; border-left: 4px solid #6B809A; }
+  .phase-2 .step-num { background: #DBEAFE; color: #2D4156; }
+  .phase-3 .phase-title { background: #E2E8F0; color: #283C52; border-left: 4px solid #5B7590; }
+  .phase-3 .step-num { background: #D0D9E4; color: #283C52; }
+  .phase-4 .phase-title { background: #DAE1EB; color: #23364D; border-left: 4px solid #4B6A87; }
+  .phase-4 .step-num { background: #C7D2E0; color: #23364D; }
+  .phase-5 .phase-title { background: #D2DAE5; color: #1E3048; border-left: 4px solid #3B5F7D; }
+  .phase-5 .step-num { background: #BFC9D8; color: #1E3048; }
+
+  .phase-arrow { text-align: center; color: var(--connector); font-size: 22px; margin: 6px 0; line-height: 1; }
+
+  .flow-legend {
+    display: flex; gap: 22px; justify-content: center; flex-wrap: wrap;
+    margin-top: 26px; padding: 13px 22px;
+    background: #F9FAFB; border-radius: 8px; border: 1px solid #E5E7EB;
+  }
+  .legend-item { font-size: 12.5px; color: #4B5563; }
+  .legend-item b { color: #1E3A5F; font-weight: 700; }
+</style>
+</head>
+<body>
+<div id="root">
+  <div class="flow-title">Ribosome Network — One Epoch on Chain (15 min)</div>
+  <div class="flow-subtitle">Miners are synthetases (design RNA); validators are chaperones (refold and score). Every value-adding step is measured; every attack path earns zero.</div>
+
+  <div class="phase-group phase-1">
+    <div class="phase-title"><span>Phase 1 · COMMIT — Synthetases (miners)</span><span class="clock">3 min</span></div>
+    <div class="phase-steps">
+      <div class="phase-step"><span class="step-num">1</span>Receive assigned target from the rotating pool <span class="param">N<sub>pool</sub> = 32</span> &nbsp;<span class="step-note">deterministic in (hotkey, epoch)</span></div>
+      <div class="phase-step"><span class="step-num">2</span>Generate K = 4 candidate RNA sequences &nbsp;<span class="step-note">GA coupled objective: TM − β·instability, β = 0.1–0.5 operating point</span></div>
+      <div class="phase-step"><span class="step-num">3</span>Publish commitment <span class="param">c = SHA256(payload ‖ salt ‖ epoch ‖ target)</span> &nbsp;<span class="step-note">commit-first: nothing to steal, target leakage impossible</span></div>
+    </div>
+  </div>
+  <div class="phase-arrow">↓</div>
+
+  <div class="phase-group phase-2">
+    <div class="phase-title"><span>Phase 2 · EVALUATE — Chaperones (validators)</span><span class="clock">6 min</span></div>
+    <div class="phase-steps">
+      <div class="phase-step"><span class="step-num">4</span>Refold each candidate with the oracle &nbsp;<span class="step-note">stub Nussinov → ViennaRNA on testnet → RhoFold+ 3D in Phase 4</span></div>
+      <div class="phase-step"><span class="step-num">5</span>Score against the target: TM-proxy + base-pair F1 &nbsp;<span class="step-note">validity gate <span class="param">δ<sub>tm</sub> = 0.35</span> — below gate earns zero</span></div>
+      <div class="phase-step"><span class="step-num">6</span>Duplicate detection on best candidates &nbsp;<span class="step-note">k-mer Jaccard ≥ <span class="param">θ<sub>dup</sub> = 0.85</span> → Sybil copy zeroed, first commit kept</span></div>
+      <div class="phase-step"><span class="step-num">7</span>Composite <span class="param">S = 0.7·TM + 0.3·exp + 0.1·diversity</span>, then sealed &nbsp;<span class="step-note">score stays sealed for <span class="param">B = 4</span> epochs — no oracle grinding</span></div>
+    </div>
+  </div>
+  <div class="phase-arrow">↓</div>
+
+  <div class="phase-group phase-3">
+    <div class="phase-title"><span>Phase 3 · SET_WEIGHTS — Chaperones</span><span class="clock">2 min</span></div>
+    <div class="phase-steps">
+      <div class="phase-step"><span class="step-num">8</span>Consume only scores whose B-epoch hold has elapsed &nbsp;<span class="step-note">weights at epoch e come from epoch e − B evaluations</span></div>
+      <div class="phase-step"><span class="step-num">9</span>Normalize and set Yuma-consensus weights on-chain</div>
+    </div>
+  </div>
+  <div class="phase-arrow">↓</div>
+
+  <div class="phase-group phase-4">
+    <div class="phase-title"><span>Phase 4 · REVEAL — Synthetases</span><span class="clock">2 min</span></div>
+    <div class="phase-steps">
+      <div class="phase-step"><span class="step-num">10</span>Publish (payload, salt) for public audit &nbsp;<span class="step-note">hash mismatch or missed reveal → zero</span></div>
+    </div>
+  </div>
+  <div class="phase-arrow">↓</div>
+
+  <div class="phase-group phase-5">
+    <div class="phase-title"><span>Phase 5 · ROTATE — Protocol</span><span class="clock">2 min</span></div>
+    <div class="phase-steps">
+      <div class="phase-step"><span class="step-num">11</span>Every <span class="param">T<sub>rot</sub> = 16</span> epochs swap half the target pool &nbsp;<span class="step-note">memorized targets decay; overfitting has no shelf life</span></div>
+      <div class="phase-step"><span class="step-num">12</span>Reject commits naming targets absent from the pool &nbsp;<span class="step-note">future-pool knowledge = leak or fault → zero</span></div>
+    </div>
+  </div>
+
+  <div class="flow-legend">
+    <div class="legend-item"><b>Commit–reveal</b> anti-theft + anti-Sybil</div>
+    <div class="legend-item"><b>Delayed reveals (B=4)</b> anti-oracle-grinding</div>
+    <div class="legend-item"><b>Pool rotation (T<sub>rot</sub>)</b> anti-overfitting</div>
+    <div class="legend-item"><b>θ<sub>dup</sub> + diversity bonus</b> Sybil / diversity</div>
+  </div>
+</div>
+</body>
+</html>
