@@ -3,7 +3,9 @@
 **A Bittensor subnet for decentralized RNA inverse folding — miners are synthetases, validators are chaperones.**
 
 Built for the [Bittensor Global Subnet Hackathon](https://hackquest.io) (Aug 22 – Oct 19, 2026).
-Status: mechanism complete, 58 tests green, 20-epoch adversarial simulation evidence included.
+Status: mechanism complete, **92 tests green** (mechanism + production neuron layer), 20-epoch adversarial
+simulation evidence included, **production Bittensor v11 integration verified end-to-end** (signed-HTTP
+transport smoke test with real wallets).
 
 ![mechanism](docs/charts/chart_mechanism_flowchart.png)
 
@@ -51,22 +53,66 @@ normalized Yuma weights. Full spec: [SPEC.md](SPEC.md).
 
 ```
 ribosome/           mechanism package (pure Python, no bittensor import)
-neurons/            miner.py / validator.py — mock + testnet modes
+neurons/            production neuron layer
+  base logic:         production_logic.py (epoch/phase math, gates, rate
+                      limiter, EMA store, commit-reveal scheduler, reveal TTL)
+  transport.py        signed-HTTP layer for bittensor v11 (btauth/1):
+                      MetaView adapter, SignedHttpClient, FastAPI app factory,
+                      ServeAxon publication
+  miner.py            synthetase neuron (mock + testnet modes)
+  validator.py        chaperone neuron (mock + testnet modes)
+  config.py           shared CLI (bt-style flags, degrades without SDK)
 simulation/         offline adversarial harness + CLI
-tests/              58 pytest cases (scoring, commit-reveal, duplicates,
-                    rotation, delayed reveals, generators, end-to-end attacks)
+tests/              92 pytest cases (scoring, commit-reveal, duplicates,
+                    rotation, delayed reveals, generators, end-to-end attacks,
+                    + production gates/scheduler/transport/endpoint logic)
 data/targets/       pool_v1.json — 54 validated targets (32 active + reservoir)
 data/paper/         β-ablation + OpenVaccine CSVs from the companion preprint
 data/runs/          simulation logs (JSONL) + summary.json
+notebooks/          Kaggle GPU notebooks (2x T4 / RTX Pro 6000)
+scripts/            transport smoke test + pool manifest builder
 docs/               charts, demo video script, 7-day plan, proposal PDF
-tools/              pool manifest builder
+Dockerfile          production neuron image (ViennaRNA included)
+docker-compose.yml  validator + miner services
+```
+
+## Bittensor v11 integration (production)
+
+Bittensor **v11 removed the axon/dendrite/Synapse networking stack**. The
+production neurons are v11-native:
+
+| Concern | v11 approach (implemented here) |
+|---|---|
+| Transport | own HTTP layer — FastAPI + uvicorn on the miner, httpx on the validator |
+| Authentication | `bittensor.http_auth` ("btauth/1"): hotkey signature over method+path+body, recency window, replay-protected nonce store |
+| Endpoint discovery | `bt.ServeAxon` intent publishes `ip:port` on chain; the validator reads endpoints from the metagraph snapshot (`neuron.axon`) |
+| Weights | `bt.set_weights(netuid, {uid: w}, wallet=...)` — conforms, preflights, retries, and picks plaintext vs timelocked commit-reveal automatically |
+| Timing | phase machine driven by `block // tempo` from the metagraph snapshot (3/6/2/2/2 phase ratio, 15-min epochs) |
+| Validator state | EMA-smoothed scores + commit-reveal plan checkpointed to `--state-dir` each epoch |
+
+Hardening on the miner endpoint: stake-gated blacklist (≥ 10,000 τ validator
+stake), token-bucket rate limiting per hotkey, strict target-assignment
+verification (a rogue validator cannot probe miners with chosen targets), and
+2-epoch TTL eviction of pending reveals. Try it locally:
+
+```bash
+.venv-bt/bin/python scripts/smoke_transport.py
+# unsigned /task -> 401 | signed /task -> commitment | /reveal -> payload+salt
+# hash(payload‖salt) == commitment | replayed request -> 401
 ```
 
 ## Testnet deployment
 
-See [SPEC.md § 10](SPEC.md#10-testnet-deployment-phase-3). Requires
-`pip install bittensor`, a registered hotkey and a testnet connection;
-the neuron code paths are identical to mock mode by design.
+See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) (Docker, wallets, registration,
+oracle selection). Quickstart without Docker:
+
+```bash
+pip install "bittensor>=11,<12" fastapi uvicorn httpx
+python neurons/miner.py --mode testnet --netuid <N> --wallet-name synthetase
+python neurons/validator.py --mode testnet --netuid <N> --wallet-name chaperone --oracle auto
+```
+The mechanism core is identical in mock and testnet mode by design — the
+simulation, the tests and the live neurons share one code path.
 
 ## Provenance
 

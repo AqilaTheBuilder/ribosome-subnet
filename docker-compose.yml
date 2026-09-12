@@ -1,0 +1,46 @@
+version: "3.9"
+
+# Ribosome Network subnet - local/testnet neuron deployment.
+# Copy .env.example to .env and fill in wallet names before first run.
+
+services:
+  validator:
+    build: .
+    image: ribosome-neuron
+    command: >
+      python neurons/validator.py --mode testnet
+      --netuid ${NETUID:-1}
+      --wallet-name ${VALIDATOR_WALLET:-chaperone}
+      --hotkey-name ${VALIDATOR_HOTKEY:-default}
+      --network ${SUBTENSOR_NETWORK:-test}
+      --oracle ${ORACLE:-auto}
+      --ema-alpha 0.3
+      --state-dir /data/state
+    environment:
+      - RIBOSOME_RHOFOLD_REPO=${RIBOSOME_RHOFOLD_REPO:-}
+      - RIBOSOME_RHOFOLD_CKPT=${RIBOSOME_RHOFOLD_CKPT:-}
+    volumes:
+      - validator-data:/data
+      - ${WALLET_PATH:-~/.bittensor}:/root/.bittensor
+    restart: unless-stopped
+
+  miner:
+    build: .
+    image: ribosome-neuron
+    command: >
+      python neurons/miner.py --mode testnet
+      --netuid ${NETUID:-1}
+      --wallet-name ${MINER_WALLET:-synthetase}
+      --hotkey-name ${MINER_HOTKEY:-default}
+      --network ${SUBTENSOR_NETWORK:-test}
+      --generator ga --beta 2.0
+      --axon-port ${MINER_PORT:-8091}
+      --public-ip ${MINER_PUBLIC_IP:-}
+    ports:
+      - "${MINER_PORT:-8091}:${MINER_PORT:-8091}"
+    volumes:
+      - ${WALLET_PATH:-~/.bittensor}:/root/.bittensor
+    restart: unless-stopped
+
+volumes:
+  validator-data:

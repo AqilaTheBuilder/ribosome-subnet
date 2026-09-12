@@ -1,8 +1,17 @@
-# Core mechanism (no bittensor required)
+# Ribosome Network subnet - pinned production requirements
+#
+# Mechanism core (SDK-free; runs the full test-suite):
 numpy>=1.26
 pytest>=8.0
 
-# Optional adapters
-# viennarna  -> install ViennaRNA system package (RNAfold binary), no pip needed
-# bittensor  -> pip install bittensor   (testnet neurons only)
-# xgboost    -> pip install xgboost     (production miner stability model)
+# Bittensor integration (testnet neurons only - bittensor v11 API):
+bittensor>=11.1,<12
+fastapi>=0.110
+uvicorn>=0.29
+httpx>=0.27
+
+# Optional oracle adapters:
+#   viennarna  -> pip install viennarna (Python bindings; RNAfold binary is
+#                 the system package instead)
+#   xgboost    -> production miner stability model (MCRMSE 0.356 forward model)
+#   torch      -> RhoFold+ oracle inference (GPU; T4 x2 / RTX Pro 6000 OK)
